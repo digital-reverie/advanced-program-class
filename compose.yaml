@@ -1,0 +1,25 @@
+name: classroom-lab
+services:
+  app:
+    image: classroom-lab:${IMAGE_TAG:-local}
+    build:
+      context: .
+      args:
+        APP_ORIGIN: ${APP_ORIGIN:-}
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${APP_PORT:-3000}:3000"
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    stop_grace_period: 35s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
