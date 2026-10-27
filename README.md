@@ -55,18 +55,18 @@ Both scripts run from their own project directory, so the caller's working direc
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `APP_PORT` | `3000` | Port published on the server |
+| `APP_PORT` | `3012` | Port published on the server |
 | `BIND_ADDRESS` | `127.0.0.1` | Interface on the server; use `0.0.0.0` for direct LAN access |
 | `APP_ORIGIN` | blank | Optional canonical public origin, such as `https://classes.example.org` |
 | `IMAGE_TAG` | `local` | Tag of the locally built Docker image |
 
 `APP_ORIGIN` is a **build-time** setting for SvelteKit 3's `paths.origin`. Rebuild after changing it. Do not set the removed SvelteKit 2 `ORIGIN` variable. Leave it blank for local testing.
 
-By default the app listens at `http://127.0.0.1:3000` on the server. For internet hosting, place your existing HTTPS reverse proxy in front of that address. For example, with Caddy installed on the same host:
+By default the app listens at `http://127.0.0.1:3012` on the server. For internet hosting, place your existing HTTPS reverse proxy in front of that address. For example, with Caddy installed on the same host:
 
 ```caddyfile
 classes.example.org {
-    reverse_proxy 127.0.0.1:3000
+    reverse_proxy 127.0.0.1:3012
 }
 ```
 
@@ -77,7 +77,7 @@ Point your domain at the server and set `APP_ORIGIN=https://classes.example.org`
 ```sh
 docker compose ps
 docker compose logs -f app
-curl http://127.0.0.1:3000/health
+curl http://127.0.0.1:3012/health
 docker compose restart app
 docker compose down
 ```
