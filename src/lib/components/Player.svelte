@@ -4,6 +4,7 @@
   import Blocks from './Blocks.svelte';
   import GrowthLab from './GrowthLab.svelte';
   import SortLab from './SortLab.svelte';
+  import InterfaceLab from './InterfaceLab.svelte';
   let { lesson } = $props();
   let page = $state(0);
   let notes = $state(false);
@@ -84,6 +85,8 @@
       <GrowthLab />
     {:else if ['test-suite', 'swap-trace', 'selection-trace'].includes(slide.kind)}
       {#key page}<SortLab mode={slide.kind} />{/key}
+    {:else if ['interface-cost', 'interface-dispatch'].includes(slide.kind)}
+      {#key page}<InterfaceLab mode={slide.kind} />{/key}
     {:else if slide.blocks}
       <Blocks blocks={slide.blocks} answers={activity.quizAnswers} revealed={activity.revealed} onAnswer={answer} onReveal={reveal} />
     {:else}

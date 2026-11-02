@@ -1,6 +1,6 @@
 # Classroom Lab
 
-A reusable classroom presentation application built with **SvelteKit 3.1.0 and Svelte 5.57.3**, using the Node adapter. It includes the 15-slide List Lab, a 14-slide Testing & Selection Sort lesson, and a four-slide starter lesson.
+A reusable classroom presentation application built with **SvelteKit 3.1.0 and Svelte 5.57.3**, using the Node adapter. It includes the 15-slide List Lab, 14-slide Testing & Selection Sort and Interfaces & Shared Behavior lessons, and a four-slide starter lesson.
 
 The presentation retains keyboard navigation, teacher notes, code traces, quizzes, answer reveals, array labs, responsive layouts, and full-screen mode. Student pages contain no links to external teaching websites. The home page links to the lessons hosted by this application.
 
@@ -14,6 +14,8 @@ npm run dev
 ```
 
 Open `http://localhost:5173`. The List Lab is at `/lessons/list-lab`, Testing & Selection Sort is at `/lessons/testing-sort`, and the starter is at `/lessons/starter`.
+
+Section 3, **Interfaces & Shared Behavior**, is at `/lessons/interfaces`. Based on Hug61B chapter 4.1, it covers a shared list contract, implements, @Override, interface references, default methods, runtime dispatch, and compile-time overload selection. Interactive labs compare traversal costs and let students predict method resolution. Allow about 50–60 minutes. Examples use a reduced List61B interface and explain their assumptions; the browser models Java rules rather than compiling Java. Source attribution remains plain text in teacher notes.
 
 The second lesson follows Hug61B chapter 3.1, with original examples covering test design, array identity versus contents, JUnit 4 assertions, helper contracts, String comparison, swapping, and recursive selection sort. Its three browser labs model operations rather than running Java. It teaches one sorting algorithm, not a survey of sorting approaches. Allow about 50–60 minutes, or pause after the swap lab and finish next class. Student pages contain no external source links.
 
