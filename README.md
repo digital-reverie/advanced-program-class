@@ -1,6 +1,6 @@
 # Classroom Lab
 
-A reusable classroom presentation application built with **SvelteKit 3.1.0 and Svelte 5.57.3**, using the Node adapter. It includes the current 15-slide List Lab and a four-slide starter lesson.
+A reusable classroom presentation application built with **SvelteKit 3.1.0 and Svelte 5.57.3**, using the Node adapter. It includes the 15-slide List Lab, a 14-slide Testing & Selection Sort lesson, and a four-slide starter lesson.
 
 The presentation retains keyboard navigation, teacher notes, code traces, quizzes, answer reveals, array labs, responsive layouts, and full-screen mode. Student pages contain no links to external teaching websites. The home page links to the lessons hosted by this application.
 
@@ -13,7 +13,9 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:5173`. The List Lab is at `/lessons/list-lab`; the starter is at `/lessons/starter`.
+Open `http://localhost:5173`. The List Lab is at `/lessons/list-lab`, Testing & Selection Sort is at `/lessons/testing-sort`, and the starter is at `/lessons/starter`.
+
+The second lesson follows Hug61B chapter 3.1, with original examples covering test design, array identity versus contents, JUnit 4 assertions, helper contracts, String comparison, swapping, and recursive selection sort. Its three browser labs model operations rather than running Java. It teaches one sorting algorithm, not a survey of sorting approaches. Allow about 50–60 minutes, or pause after the swap lab and finish next class. Student pages contain no external source links.
 
 On Windows, use `npm.cmd` if PowerShell blocks the npm script shim.
 
