@@ -3,6 +3,8 @@
   import { replaceState } from '$app/navigation';
   import Blocks from './Blocks.svelte';
   import GrowthLab from './GrowthLab.svelte';
+  import IteratorLab from './IteratorLab.svelte';
+  import EqualityLab from './EqualityLab.svelte';
   import GrabBagLab from './GrabBagLab.svelte';
   import ResizeLab from './ResizeLab.svelte';
   import SortLab from './SortLab.svelte';
@@ -85,6 +87,10 @@
   <div bind:this={content} data-slide-content>
     {#if slide.kind === 'growth'}
       <GrowthLab />
+    {:else if slide.kind === 'iterator-lab'}
+      <IteratorLab />
+    {:else if slide.kind === 'equality-lab'}
+      <EqualityLab />
     {:else if slide.kind === 'grab-bag'}
       <GrabBagLab />
     {:else if slide.kind === 'resize'}

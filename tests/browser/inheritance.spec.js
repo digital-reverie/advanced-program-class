@@ -18,6 +18,7 @@ test('bag sampling preserves items and removal preserves all other occurrences',
 });
 test('inheritance extension reveals contract and signature reasoning',async({page})=>{
   await page.goto('/lessons/interfaces#14');
+  await expect(page.locator('h1')).toHaveText('Inherit a promise, inherit a body');
   await page.getByRole('button',{name:'Reveal reasoning'}).click();
   await expect(page.locator('.answer')).toContainText('Each concrete class');
   await page.selectOption('#jump','14');
