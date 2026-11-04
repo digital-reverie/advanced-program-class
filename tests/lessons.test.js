@@ -31,8 +31,8 @@ test('circular deque agrees with an abstract sequence across wrapping and capaci
   }
 });
 test('every diagram renders without external links and escapes editable item input', () => {
-  for(let page=0;page<slides.length;page++) {
-    const html=render({page,...initialState()});
+  for(const slide of slides.filter(slide => slide.diagramIndex !== undefined)) {
+    const html=render({page:slide.diagramIndex,...initialState()});
     assert.ok(html.length>0);assert.doesNotMatch(html,/https?:\/\/|<a\s/);
   }
   const html=render({page:8,...initialState(),item:'"><script>alert(1)</script>'});

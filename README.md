@@ -1,6 +1,6 @@
 # Classroom Lab
 
-A reusable classroom presentation application built with **SvelteKit 3.1.0 and Svelte 5.57.3**, using the Node adapter. It includes the 15-slide List Lab, 14-slide Testing & Selection Sort and Interfaces & Shared Behavior lessons, and a four-slide starter lesson.
+A reusable classroom presentation application built with **SvelteKit 3.1.0 and Svelte 5.57.3**, using the Node adapter. It includes the 18-slide List Lab (including wrapped resizing and amortized complexity), 14-slide Testing & Selection Sort and Interfaces & Shared Behavior lessons, and a four-slide starter lesson.
 
 The presentation retains keyboard navigation, teacher notes, code traces, quizzes, answer reveals, array labs, responsive layouts, and full-screen mode. Student pages contain no links to external teaching websites. The home page links to the lessons hosted by this application.
 

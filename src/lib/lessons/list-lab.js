@@ -1,9 +1,10 @@
+import { resizingSlides } from './resizing.js';
 import { escapeHtml as esc } from '../utils.js';
 // Author-controlled HTML diagrams retained from the original lesson.
 // All state is supplied by the player: this module never reads or changes the DOM.
 const sources={course:['Course calendar'],lecture:['Lecture 7: DLLists and Basic ALists'],chapter:['Chapter 6: DLLists and Arrays'],resize:['Chapter 7: Resizing ArrayList'],ods:['Open Data Structures §2.1: ArrayStack'],worksheet:['Berkeley Discussion 04'],linked:['Berkeley linked deque project'],array:['Berkeley array deque project']};
 const slideRows=[
-['The next link','Start here','Keep the warm-up to 2–3 minutes. Slides 3–8 focus on DLList operations and deque preparation. Slides 9–15 cover the array extension and exit ticket. Assume SLLists and generic syntax are familiar. If needed, remind students that T is the item type while prev and next refer to nodes.','course'],
+['The next link','Start here','Keep the warm-up to 2–3 minutes. Slides 3–8 focus on DLList operations and deque preparation. Slides 9–18 cover the array extension and exit ticket. Assume SLLists and generic syntax are familiar. If needed, remind students that T is the item type while prev and next refer to nodes.','course'],
 ['Why add a backward link?','Warm-up · 90 seconds','Spend 90 seconds on the missing predecessor link, then move directly to the DLList diagram. No SLList implementation review is needed. Ask: what extra reference would let C find B?','chapter'],
 ['A link in each direction','DLList · Representation','Node names identify objects. An arrow in a field means that field refers to the named object. S is one sentinel, not an item. Walk next and then prev. The reciprocal-link rules apply to the sentinel too.','linked'],
 ['Insertion, one assignment at a time','DLList · Trace','Ask for the two links that connect existing nodes to N. Temporary broken reciprocity during a method is expected. The invariant must hold again when the method returns. Try the empty case on slide 6.','linked'],
@@ -19,7 +20,9 @@ const slideRows=[
 ['Exit ticket','Check · Explain your reasoning','Use as individual written work for five minutes. Reveal after students commit. If answers 1–2 are shaky, return to the linked-list lesson before assigning array work.','chapter'],
 ['What each representation remembers','Recap · Connections','Ask students to explain one operation using a diagram rather than reciting its runtime. The lesson draws on CS61B Lecture 7, textbook Chapters 6–7, and Open Data Structures section 2.1.','course']
 ];
-export const slides = slideRows.map(([title, section, notes, source], index) => ({title, section, notes, source: sources[source][0], kind: index === 10 ? 'growth' : 'diagram'}));
+export const slides = slideRows.map(([title, section, notes, source], index) => ({title, section, notes, diagramIndex: index, source: sources[source][0], kind: index === 10 ? 'growth' : 'diagram'}));
+slides.splice(12, 0, ...resizingSlides);
+
 export function initialState() { return {step:0, quizAnswers:{}, revealed:{}, arr:[12,24,36], cap:4, item:'48', arrayMsg:'The next free slot is index 3.', circular:{a:['C',null,null,null,null,null,'A','B'],front:6,size:3}, circleMsg:'Logical order: A, B, C. Physical storage wraps at the edge.', growthN:16}; }
 export function render({page, step, quizAnswers, revealed, arr, cap, item, arrayMsg, circular, circleMsg, growthN}) {
 function code(lines,active=-1){return '<pre><code>'+lines.map((l,i)=>`<span${i===active?' class="active"':''}>${esc(l)}</span>`).join('\n')+'</code></pre>'}

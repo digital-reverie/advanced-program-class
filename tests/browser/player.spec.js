@@ -5,7 +5,7 @@ test('all lesson slides render, resize, and contain no external links', async ({
   await page.goto('/lessons/list-lab');
   for(const width of [1440,390]) {
     await page.setViewportSize({width,height:1000});
-    for(let i=0;i<15;i++) {
+    for(let i=0;i<18;i++) {
       await page.selectOption('#jump',String(i));
       await expect(page.locator('h1')).not.toBeEmpty();
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
@@ -19,7 +19,7 @@ test('traces, puzzles, labs and refresh links work',async({page})=>{
   await expect(page.locator('h1')).toHaveText('Insertion, one assignment at a time');
   for(let i=0;i<5;i++) await page.locator('[data-step="1"]').click();
   await expect(page.locator('.tag').first()).toHaveText('size = 3');
-  await page.reload();await expect(page.locator('#counter')).toHaveText('4 / 15');
+  await page.reload();await expect(page.locator('#counter')).toHaveText('4 / 18');
   await page.selectOption('#jump','6');await page.locator('[data-choice="2"]').click();
   await expect(page.locator('#feedback-repair')).toContainText('Correct');
   await page.locator('[data-reveal]').click();await expect(page.locator('#bug-tests')).toBeVisible();
@@ -38,6 +38,6 @@ test('starter template, lesson switching and missing lesson',async({page})=>{
   await page.selectOption('#jump','2');await page.getByRole('button',{name:'Reveal reasoning'}).click();
   await expect(page.locator('.answer')).toContainText('final total is 3');
   await page.getByRole('link',{name:'CLASSROOM LAB'}).click();
-  await page.getByRole('link').filter({hasText:'List Lab'}).click();await expect(page.locator('#counter')).toHaveText('1 / 15');
+  await page.getByRole('link').filter({hasText:'List Lab'}).click();await expect(page.locator('#counter')).toHaveText('1 / 18');
   const response=await page.goto('/lessons/missing');expect(response.status()).toBe(404);
 });

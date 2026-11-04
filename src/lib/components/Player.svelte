@@ -3,6 +3,7 @@
   import { replaceState } from '$app/navigation';
   import Blocks from './Blocks.svelte';
   import GrowthLab from './GrowthLab.svelte';
+  import ResizeLab from './ResizeLab.svelte';
   import SortLab from './SortLab.svelte';
   import InterfaceLab from './InterfaceLab.svelte';
   let { lesson } = $props();
@@ -14,7 +15,7 @@
   let activity = $state.raw(createActivity());
   let content;
   const slide = $derived(lesson.slides[page]);
-  const markup = $derived(lesson.render?.({page, ...activity}) ?? '');
+  const markup = $derived(lesson.render?.({page: slide.diagramIndex ?? page, ...activity}) ?? '');
 
   function fromHash() {
     const n = Number(window.location.hash.slice(1));
@@ -83,6 +84,8 @@
   <div bind:this={content} data-slide-content>
     {#if slide.kind === 'growth'}
       <GrowthLab />
+    {:else if slide.kind === 'resize'}
+      <ResizeLab />
     {:else if ['test-suite', 'swap-trace', 'selection-trace'].includes(slide.kind)}
       {#key page}<SortLab mode={slide.kind} />{/key}
     {:else if ['interface-cost', 'interface-dispatch'].includes(slide.kind)}
