@@ -1,10 +1,11 @@
+import { inheritanceExtension } from './inheritance-extension.js';
 const p=text=>({type:'paragraph',text});
 const code=text=>({type:'code',text});
 const note=(title,text)=>({type:'callout',title,text});
 const reveal=(id,question,answer)=>({type:'reveal',id,question,answer});
 const quiz=(id,question,options,answer,explanation)=>({type:'quiz',id,question,options,answer,explanation});
 const slides=[
- {title:'Interfaces & Shared Behavior',section:'Section 3 · One client, several implementations',notes:'Suggested 50–60 minutes: 10 minutes problem and contract, 15 minutes static/runtime types, 15 minutes default methods and cost, 10–15 minutes overload lab and exit ticket. Revisit list structure only as needed.',blocks:[
+ {title:'Interfaces & Shared Behavior',section:'Section 3 · One client, several implementations',notes:'Core lesson, 50–60 minutes: 10 minutes problem and contract, 15 minutes static/runtime types, 15 minutes default methods and cost, 10–15 minutes overload lab and exit ticket. Allow an additional 25–35 minutes for the inheritance and ADT extension before the exit ticket. Revisit list structure only as needed.',blocks:[
   p('An array-backed list and a linked list store items differently. A client that only asks for size() and get(i) should be able to work with either one.'),
   note('Today’s goal','Write code against a shared interface, then explain which operations the compiler permits and which implementation runs.'),
   reveal('start','What does a method that finds the longest word need to know about storage?','It needs a way to inspect the words. It does not need the backing array, nodes, or sentinel, provided the list offers the necessary operations.')
@@ -71,4 +72,5 @@ const slides=[
   reveal('exit4','4. Why might the default indexed print be quadratic for an SLList?','get(i) inspects i + 1 item nodes from the front. Across n indices the total is 1 + 2 + … + n. A direct traversal inspects only n item nodes.')
  ]}
 ];
-export default {id:'interfaces',title:'Interfaces & Shared Behavior',subject:'Advanced Programming · Section 3',description:'Use one list contract, explore default methods, and distinguish overload selection from runtime dispatch.',slides:slides.map(s=>({...s,source:'Hug61B chapter 4.1: Intro and interfaces. Original examples with a reduced List61B contract.'}))};
+slides.splice(13, 0, ...inheritanceExtension);
+export default {id:'interfaces',title:'Interfaces & Shared Behavior',subject:'Advanced Programming · Section 3',description:'Use one list contract, explore default methods, and distinguish overload selection from runtime dispatch.',slides:slides.map(s=>({...s,source:'Hug61B chapter 4.1 and CS61B Spring 2026 Lecture 9: Interface and Implementation Inheritance. Original examples with a reduced List61B contract.'}))};

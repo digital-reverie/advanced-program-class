@@ -4,7 +4,7 @@ test('interface lesson renders at classroom and mobile sizes without external li
   await page.goto('/lessons/interfaces');
   for(const width of [1440,390]){
     await page.setViewportSize({width,height:1000});
-    for(let i=0;i<14;i++){
+    for(let i=0;i<21;i++){
       await page.selectOption('#jump',String(i));await expect(page.locator('h1')).not.toBeEmpty();
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
       await expect(page.locator('a[href^="http"]')).toHaveCount(0);

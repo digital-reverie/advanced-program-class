@@ -3,6 +3,7 @@
   import { replaceState } from '$app/navigation';
   import Blocks from './Blocks.svelte';
   import GrowthLab from './GrowthLab.svelte';
+  import GrabBagLab from './GrabBagLab.svelte';
   import ResizeLab from './ResizeLab.svelte';
   import SortLab from './SortLab.svelte';
   import InterfaceLab from './InterfaceLab.svelte';
@@ -84,6 +85,8 @@
   <div bind:this={content} data-slide-content>
     {#if slide.kind === 'growth'}
       <GrowthLab />
+    {:else if slide.kind === 'grab-bag'}
+      <GrabBagLab />
     {:else if slide.kind === 'resize'}
       <ResizeLab />
     {:else if ['test-suite', 'swap-trace', 'selection-trace'].includes(slide.kind)}
